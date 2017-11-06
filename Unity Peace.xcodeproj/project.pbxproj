@@ -18,6 +18,14 @@
 		0CEEFDC41FB0A3D400DC4A7E /* UPHomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CEEFDC31FB0A3D400DC4A7E /* UPHomeViewController.swift */; };
 		0CEEFDC61FB0A3FD00DC4A7E /* UPNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CEEFDC51FB0A3FD00DC4A7E /* UPNavigationController.swift */; };
 		0CEEFDC81FB0A59D00DC4A7E /* UPHomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0CEEFDC71FB0A59D00DC4A7E /* UPHomeViewController.xib */; };
+		0CEEFDCA1FB0A8ED00DC4A7E /* UPWatchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CEEFDC91FB0A8ED00DC4A7E /* UPWatchViewController.swift */; };
+		0CEEFDCC1FB0A8FA00DC4A7E /* UPWatchViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0CEEFDCB1FB0A8FA00DC4A7E /* UPWatchViewController.xib */; };
+		0CEEFDCE1FB0A91700DC4A7E /* UPDiaryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CEEFDCD1FB0A91700DC4A7E /* UPDiaryViewController.swift */; };
+		0CEEFDD01FB0A92200DC4A7E /* UPDiaryViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0CEEFDCF1FB0A92200DC4A7E /* UPDiaryViewController.xib */; };
+		0CEEFDD21FB0A94600DC4A7E /* UPCalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CEEFDD11FB0A94600DC4A7E /* UPCalendarViewController.swift */; };
+		0CEEFDD41FB0A96400DC4A7E /* UPCalendarViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0CEEFDD31FB0A96400DC4A7E /* UPCalendarViewController.xib */; };
+		0CEEFDD61FB0A98600DC4A7E /* UPMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CEEFDD51FB0A98600DC4A7E /* UPMenuViewController.swift */; };
+		0CEEFDD81FB0A99300DC4A7E /* UPMenuViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0CEEFDD71FB0A99300DC4A7E /* UPMenuViewController.xib */; };
 		277BB8B177D44AA00EDC2A35 /* Pods_Unity_Peace.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9CBB434E51975A46E485E43 /* Pods_Unity_Peace.framework */; };
 /* End PBXBuildFile section */
 
@@ -35,6 +43,14 @@
 		0CEEFDC31FB0A3D400DC4A7E /* UPHomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UPHomeViewController.swift; sourceTree = "<group>"; };
 		0CEEFDC51FB0A3FD00DC4A7E /* UPNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UPNavigationController.swift; sourceTree = "<group>"; };
 		0CEEFDC71FB0A59D00DC4A7E /* UPHomeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UPHomeViewController.xib; sourceTree = "<group>"; };
+		0CEEFDC91FB0A8ED00DC4A7E /* UPWatchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UPWatchViewController.swift; sourceTree = "<group>"; };
+		0CEEFDCB1FB0A8FA00DC4A7E /* UPWatchViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UPWatchViewController.xib; sourceTree = "<group>"; };
+		0CEEFDCD1FB0A91700DC4A7E /* UPDiaryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UPDiaryViewController.swift; sourceTree = "<group>"; };
+		0CEEFDCF1FB0A92200DC4A7E /* UPDiaryViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UPDiaryViewController.xib; sourceTree = "<group>"; };
+		0CEEFDD11FB0A94600DC4A7E /* UPCalendarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UPCalendarViewController.swift; sourceTree = "<group>"; };
+		0CEEFDD31FB0A96400DC4A7E /* UPCalendarViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UPCalendarViewController.xib; sourceTree = "<group>"; };
+		0CEEFDD51FB0A98600DC4A7E /* UPMenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UPMenuViewController.swift; sourceTree = "<group>"; };
+		0CEEFDD71FB0A99300DC4A7E /* UPMenuViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UPMenuViewController.xib; sourceTree = "<group>"; };
 		3479FCD6A906EDE90F60CD06 /* Pods-Unity Peace.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Unity Peace.release.xcconfig"; path = "Pods/Target Support Files/Pods-Unity Peace/Pods-Unity Peace.release.xcconfig"; sourceTree = "<group>"; };
 		A990EE6D39EBADD09F9EC84F /* Pods-Unity Peace.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Unity Peace.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Unity Peace/Pods-Unity Peace.debug.xcconfig"; sourceTree = "<group>"; };
 		C9CBB434E51975A46E485E43 /* Pods_Unity_Peace.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Unity_Peace.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -93,6 +109,10 @@
 			children = (
 				0CEEFDC51FB0A3FD00DC4A7E /* UPNavigationController.swift */,
 				0CEEFDC31FB0A3D400DC4A7E /* UPHomeViewController.swift */,
+				0CEEFDC91FB0A8ED00DC4A7E /* UPWatchViewController.swift */,
+				0CEEFDCD1FB0A91700DC4A7E /* UPDiaryViewController.swift */,
+				0CEEFDD11FB0A94600DC4A7E /* UPCalendarViewController.swift */,
+				0CEEFDD51FB0A98600DC4A7E /* UPMenuViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -117,6 +137,10 @@
 			isa = PBXGroup;
 			children = (
 				0CEEFDC71FB0A59D00DC4A7E /* UPHomeViewController.xib */,
+				0CEEFDCB1FB0A8FA00DC4A7E /* UPWatchViewController.xib */,
+				0CEEFDCF1FB0A92200DC4A7E /* UPDiaryViewController.xib */,
+				0CEEFDD31FB0A96400DC4A7E /* UPCalendarViewController.xib */,
+				0CEEFDD71FB0A99300DC4A7E /* UPMenuViewController.xib */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -225,8 +249,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				0CEEFDC81FB0A59D00DC4A7E /* UPHomeViewController.xib in Resources */,
+				0CEEFDCC1FB0A8FA00DC4A7E /* UPWatchViewController.xib in Resources */,
 				0CEEFDAD1FB0988800DC4A7E /* LaunchScreen.storyboard in Resources */,
+				0CEEFDD41FB0A96400DC4A7E /* UPCalendarViewController.xib in Resources */,
+				0CEEFDD81FB0A99300DC4A7E /* UPMenuViewController.xib in Resources */,
 				0CEEFDAA1FB0988800DC4A7E /* Assets.xcassets in Resources */,
+				0CEEFDD01FB0A92200DC4A7E /* UPDiaryViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -304,10 +332,14 @@
 				0CEEFDA81FB0988800DC4A7E /* Unity_Peace.xcdatamodeld in Sources */,
 				0CEEFDC41FB0A3D400DC4A7E /* UPHomeViewController.swift in Sources */,
 				0CEEFDC61FB0A3FD00DC4A7E /* UPNavigationController.swift in Sources */,
+				0CEEFDD21FB0A94600DC4A7E /* UPCalendarViewController.swift in Sources */,
 				0CEEFDA21FB0988800DC4A7E /* ViewController.swift in Sources */,
 				0CEEFDBF1FB09DFF00DC4A7E /* ViewFromNib.swift in Sources */,
+				0CEEFDD61FB0A98600DC4A7E /* UPMenuViewController.swift in Sources */,
 				0CEEFDA01FB0988800DC4A7E /* AppDelegate.swift in Sources */,
 				0CEEFDBD1FB09CFE00DC4A7E /* UPPreferences.swift in Sources */,
+				0CEEFDCE1FB0A91700DC4A7E /* UPDiaryViewController.swift in Sources */,
+				0CEEFDCA1FB0A8ED00DC4A7E /* UPWatchViewController.swift in Sources */,
 				0CEEFDC11FB09E2900DC4A7E /* Extensions+Customizations.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
