@@ -18,6 +18,7 @@ target 'Unity Peace' do
   pod 'MBProgressHUD'
   pod 'SDWebImage'
   pod 'RMessage'
+  pod 'FSCalendar'
   # Pods for OneOunce
 
 

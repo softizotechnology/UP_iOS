@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "93228BCBBA21A7A7E043AF58F13A6234"
+               BlueprintIdentifier = "308FE280697F2DEAD88F4DE97E2D6674"
                BuildableName = "Pods_Unity_Peace.framework"
                BlueprintName = "Pods-Unity Peace"
                ReferencedContainer = "container:Pods.xcodeproj">
@@ -45,7 +45,7 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "93228BCBBA21A7A7E043AF58F13A6234"
+            BlueprintIdentifier = "308FE280697F2DEAD88F4DE97E2D6674"
             BuildableName = "Pods_Unity_Peace.framework"
             BlueprintName = "Pods-Unity Peace"
             ReferencedContainer = "container:Pods.xcodeproj">

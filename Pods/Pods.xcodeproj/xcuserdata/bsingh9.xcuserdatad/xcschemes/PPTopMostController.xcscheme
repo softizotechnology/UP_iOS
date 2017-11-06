@@ -14,7 +14,7 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = 'primary'
-               BlueprintIdentifier = 'C3372196C457D7CF7E095FFEE279E1F8'
+               BlueprintIdentifier = '527208327B791C26B243D64161E664DF'
                BlueprintName = 'PPTopMostController'
                ReferencedContainer = 'container:Pods.xcodeproj'
                BuildableName = 'PPTopMostController.framework'>

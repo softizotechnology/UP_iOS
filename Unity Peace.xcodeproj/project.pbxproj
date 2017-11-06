@@ -26,6 +26,7 @@
 		0CEEFDD41FB0A96400DC4A7E /* UPCalendarViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0CEEFDD31FB0A96400DC4A7E /* UPCalendarViewController.xib */; };
 		0CEEFDD61FB0A98600DC4A7E /* UPMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CEEFDD51FB0A98600DC4A7E /* UPMenuViewController.swift */; };
 		0CEEFDD81FB0A99300DC4A7E /* UPMenuViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0CEEFDD71FB0A99300DC4A7E /* UPMenuViewController.xib */; };
+		0CEEFDDA1FB0C29900DC4A7E /* NetworkIO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CEEFDD91FB0C29900DC4A7E /* NetworkIO.swift */; };
 		277BB8B177D44AA00EDC2A35 /* Pods_Unity_Peace.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9CBB434E51975A46E485E43 /* Pods_Unity_Peace.framework */; };
 /* End PBXBuildFile section */
 
@@ -51,6 +52,7 @@
 		0CEEFDD31FB0A96400DC4A7E /* UPCalendarViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UPCalendarViewController.xib; sourceTree = "<group>"; };
 		0CEEFDD51FB0A98600DC4A7E /* UPMenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UPMenuViewController.swift; sourceTree = "<group>"; };
 		0CEEFDD71FB0A99300DC4A7E /* UPMenuViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UPMenuViewController.xib; sourceTree = "<group>"; };
+		0CEEFDD91FB0C29900DC4A7E /* NetworkIO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkIO.swift; sourceTree = "<group>"; };
 		3479FCD6A906EDE90F60CD06 /* Pods-Unity Peace.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Unity Peace.release.xcconfig"; path = "Pods/Target Support Files/Pods-Unity Peace/Pods-Unity Peace.release.xcconfig"; sourceTree = "<group>"; };
 		A990EE6D39EBADD09F9EC84F /* Pods-Unity Peace.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Unity Peace.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Unity Peace/Pods-Unity Peace.debug.xcconfig"; sourceTree = "<group>"; };
 		C9CBB434E51975A46E485E43 /* Pods_Unity_Peace.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Unity_Peace.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -165,6 +167,7 @@
 		0CEEFDC21FB0A39300DC4A7E /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				0CEEFDD91FB0C29900DC4A7E /* NetworkIO.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -268,6 +271,7 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-Unity Peace/Pods-Unity Peace-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/FSCalendar/FSCalendar.framework",
 				"${BUILT_PRODUCTS_DIR}/HexColors/HexColors.framework",
 				"${BUILT_PRODUCTS_DIR}/MBProgressHUD/MBProgressHUD.framework",
 				"${BUILT_PRODUCTS_DIR}/PPTopMostController/PPTopMostController.framework",
@@ -277,6 +281,7 @@
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FSCalendar.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/HexColors.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MBProgressHUD.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PPTopMostController.framework",
@@ -338,6 +343,7 @@
 				0CEEFDD61FB0A98600DC4A7E /* UPMenuViewController.swift in Sources */,
 				0CEEFDA01FB0988800DC4A7E /* AppDelegate.swift in Sources */,
 				0CEEFDBD1FB09CFE00DC4A7E /* UPPreferences.swift in Sources */,
+				0CEEFDDA1FB0C29900DC4A7E /* NetworkIO.swift in Sources */,
 				0CEEFDCE1FB0A91700DC4A7E /* UPDiaryViewController.swift in Sources */,
 				0CEEFDCA1FB0A8ED00DC4A7E /* UPWatchViewController.swift in Sources */,
 				0CEEFDC11FB09E2900DC4A7E /* Extensions+Customizations.swift in Sources */,
