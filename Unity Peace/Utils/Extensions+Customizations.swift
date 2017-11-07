@@ -564,6 +564,17 @@ class DashboardGreenLabel : UILabel {
     }
 }
 
+class MenuView : UIView {
+    override func awakeFromNib() {
+        self.setUp()
+    }
+    
+    func setUp() {
+        self.makeCornerRound()
+        self.backgroundColor = UIColor(red: 75.0/255.0, green: 115/255.0, blue: 190/255.0, alpha: 1)
+    }
+}
+
 
 class TextField: UITextField {
     override var placeholder: String? {
