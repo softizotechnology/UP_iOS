@@ -19,6 +19,7 @@ target 'Unity Peace' do
   pod 'SDWebImage'
   pod 'RMessage'
   pod 'FSCalendar'
+  pod 'Adhan'
   # Pods for OneOunce
 
 

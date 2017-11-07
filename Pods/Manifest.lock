@@ -1,4 +1,5 @@
 PODS:
+  - Adhan (0.1.5)
   - FSCalendar (2.7.9)
   - HexColors (4.0.0)
   - MBProgressHUD (1.0.0)
@@ -12,6 +13,7 @@ PODS:
   - SDWebImage/Core (4.2.0)
 
 DEPENDENCIES:
+  - Adhan
   - FSCalendar
   - MBProgressHUD
   - PagingMenuController
@@ -19,6 +21,7 @@ DEPENDENCIES:
   - SDWebImage
 
 SPEC CHECKSUMS:
+  Adhan: a99ff959f806d4c0be7c73eaa768c99c4976d6e1
   FSCalendar: a04b09f16f811bc92e82f3cf852a15225233b9d5
   HexColors: 5f95843ef89aff6a72e1fd3a8ebabf205cc43379
   MBProgressHUD: 4890f671c94e8a0f3cf959aa731e9de2f036d71a
@@ -27,6 +30,6 @@ SPEC CHECKSUMS:
   RMessage: 31d44bd26a8f353f987d2e7194f3e9ffb203cbf2
   SDWebImage: b1189fd85365c18434270a11a5cad13a1e848d53
 
-PODFILE CHECKSUM: 78e0ca2643f42bb61b9aec0ecf9cc4aa8c6c3a44
+PODFILE CHECKSUM: aff3126e3f579377db543eebd8fcf089d9899966
 
 COCOAPODS: 1.3.1

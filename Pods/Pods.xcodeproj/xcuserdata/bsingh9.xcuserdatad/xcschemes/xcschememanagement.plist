@@ -4,6 +4,11 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
+		<key>Adhan.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>FSCalendar.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -47,12 +52,17 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>2472FD7C307F14D855029BC5111836F3</key>
+		<key>0BF97992FF0A64CD0651F99D8452AE00</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>308FE280697F2DEAD88F4DE97E2D6674</key>
+		<key>21EE0983832077F2C88BFC93B94CA415</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>2C1407455AB1D6D95E5F50C157ECD2C1</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -62,17 +72,12 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>527208327B791C26B243D64161E664DF</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
 		<key>6ADB3656BDFD85FB77E0CAB44BFF61E6</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>76336083B6250D081EAF709B2AD85BE4</key>
+		<key>8C07E24A083D72D75EDB81AA182B1005</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -83,6 +88,11 @@
 			<true/>
 		</dict>
 		<key>C5A2DB7A84B7B78E359870D2E1B24AA7</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>DFB10324827675E1BA1A3ADB1CF06D5C</key>
 		<dict>
 			<key>primary</key>
 			<true/>
