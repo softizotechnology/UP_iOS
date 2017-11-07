@@ -7,19 +7,22 @@
 //
 
 import UIKit
+import Adhan
+import CoreLocation
 
 class UPWatchViewController: UIViewController {
     
     @IBOutlet weak var dialView: UIView!
-    @IBOutlet weak var firstNeedleContainer: UIView!
+    
+    @IBOutlet weak var fajr: UIView!
     @IBOutlet weak var firstNeedle: UIImageView!
-    @IBOutlet weak var secondNeedleContainer: UIView!
+    @IBOutlet weak var dhuhr: UIView!
     @IBOutlet weak var secondNeedle: UIImageView!
-    @IBOutlet weak var thirdNeedleContainer: UIView!
+    @IBOutlet weak var asr: UIView!
     @IBOutlet weak var thirdNeedle: UIImageView!
-    @IBOutlet weak var fourthNeedleView: UIView!
+    @IBOutlet weak var maghrib: UIView!
     @IBOutlet weak var fourthNeedle: UIImageView!
-    @IBOutlet weak var fifthNeedleContainer: UIView!
+    @IBOutlet weak var isha: UIView!
     @IBOutlet weak var fifthNeedle: UIImageView!
     @IBOutlet weak var hourNeedleView: UIView!
     @IBOutlet weak var hourNeedle: UIImageView!
@@ -27,45 +30,78 @@ class UPWatchViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.setUpNeedles()
         self.dialView.layer.cornerRadius = self.dialView.frame.size.width / 2
+        
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        self.perform(#selector(self.setNeedles), with: nil, afterDelay: 1.0)
-        
     }
 
     
-    func drawGradientOver(container: UIView) {
-        let black = UIColor.black
-        let maskLayer = CAGradientLayer()
-        maskLayer.opacity = 0.8
-        maskLayer.colors = [black.cgColor, UIColor.gray.cgColor]
-        
-        // Hoizontal - commenting these two lines will make the gradient veritcal
-        maskLayer.startPoint = CGPoint(x: 0.0, y: 0.5)
-        maskLayer.endPoint = CGPoint(x: 1.0, y: 0.5)
-        
-        let gradTopStart = NSNumber(value: 0.0)
-        let gradTopEnd = NSNumber(value: 0.5)
-        let gradBottomStart = NSNumber(value: 0.5)
-        let gradBottomEnd = NSNumber(value: 1.0)
-        maskLayer.locations = [gradTopStart, gradTopEnd, gradBottomStart, gradBottomEnd]
-        
-        maskLayer.bounds = container.bounds
-        maskLayer.anchorPoint = CGPoint.zero
-        container.layer.addSublayer(maskLayer)
-    }
-   
+    @objc func locationDidUpdate (notif : Notification) {
+        if let newLocation = notif.object as? CLLocation {
+            NSLog("Got new location \(String(describing: newLocation))")
+            let cal = Calendar(identifier: Calendar.Identifier.gregorian)
+            let date = cal.dateComponents([.year, .month, .day], from: Date())
+            let coordinates = Coordinates(latitude: 12.8215893276892, longitude: 77.6570353668526)
+            var params = CalculationMethod.muslimWorldLeague.params
+            params.madhab = .hanafi
+            if let prayers = PrayerTimes(coordinates: coordinates, date: date, calculationParameters: params) {
+                let formatter = DateFormatter()
+                formatter.dateFormat = "HH:mm"
+                formatter.timeZone = TimeZone.current
+                
+                NSLog("fajr %@", formatter.string(from: prayers.fajr))
+                self.setTime(needle: self.fajr, time: formatter.string(from: prayers.fajr))
+                NSLog("sunrise %@", formatter.string(from: prayers.sunrise))
+                NSLog("dhuhr %@", formatter.string(from: prayers.dhuhr))
+                self.setTime(needle: self.dhuhr, time: formatter.string(from: prayers.dhuhr))
+                NSLog("asr %@", formatter.string(from: prayers.asr))
+                self.setTime(needle: self.asr, time: formatter.string(from: prayers.asr))
+                NSLog("maghrib %@", formatter.string(from: prayers.maghrib))
+                self.setTime(needle: self.maghrib, time: formatter.string(from: prayers.maghrib))
+                NSLog("isha %@", formatter.string(from: prayers.isha))
+                self.setTime(needle: self.isha, time: formatter.string(from: prayers.isha))
 
-    func setNeedles () {
-        self.rotateView(targetView: self.secondNeedleContainer, degrees : 20)
-        self.rotateView(targetView: self.thirdNeedleContainer, degrees : 170)
-        self.rotateView(targetView: self.fourthNeedleView, degrees : 270)
-        self.rotateView(targetView: self.fifthNeedleContainer, degrees: 315)
-        self.rotateView(targetView: self.hourNeedleView, degrees: 34)
-        self.arcView.drawRingFittingInsideView(startAngle: 0, endAngle: 20)
+            }
+        }
+    }
+
+    func setTime (needle: UIView, time : String?) {
+        guard time != nil else {
+            return
+        }
+        let components = time!.components(separatedBy: ":")
+        guard components.count == 2 else {
+            return
+        }
+        let hours = Float(components[0])
+        let minutes = Float(components[1])
+        
+        guard hours != nil, minutes != nil else {
+            return
+        }
+        
+        var angle  = 15 * hours!
+        angle += (0.25 * minutes!)
+        //angle -= 90.0
+        NSLog("Time \(String(describing: time)), angle \(angle)")
+        switch needle {
+        case self.asr:
+            self.rotateView(targetView: self.asr, degrees: angle)
+        case self.fajr:
+            self.rotateView(targetView: self.fajr, degrees: angle)
+        case self.dhuhr:
+            self.rotateView(targetView: self.dhuhr, degrees: angle)
+        case self.maghrib:
+            self.rotateView(targetView: self.maghrib, degrees: angle)
+        case self.isha:
+            self.rotateView(targetView: self.isha, degrees: angle)
+        default:
+            break
+        }
         
     }
     
@@ -86,6 +122,20 @@ class UPWatchViewController: UIViewController {
             }
         }
     }
+    
+    func setUpNeedles() {
+        
+
+        let radians = (CGFloat(90) / 180) * CGFloat(Double.pi)
+        self.asr.transform = asr.transform.rotated(by: radians)
+        self.fajr.transform = fajr.transform.rotated(by: radians)
+        self.dhuhr.transform = dhuhr.transform.rotated(by: radians)
+        self.maghrib.transform = maghrib.transform.rotated(by: radians)
+        self.isha.transform = isha.transform.rotated(by: radians)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(self.locationDidUpdate(notif:)), name: LocationManager.LocationDidUpdateNotification, object: nil)
+    }
+    
 
 }
 

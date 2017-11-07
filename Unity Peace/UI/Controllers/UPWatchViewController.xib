@@ -14,19 +14,19 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="UPWatchViewController" customModule="Unity_Peace" customModuleProvider="target">
             <connections>
                 <outlet property="arcView" destination="V0Z-y8-zl2" id="Qlm-Gw-970"/>
+                <outlet property="asr" destination="llB-Ah-UUk" id="kve-Cf-aEy"/>
+                <outlet property="dhuhr" destination="pVQ-yh-b31" id="GXK-GI-e8Q"/>
                 <outlet property="dialView" destination="3rj-fy-b8e" id="pPG-MW-H7q"/>
+                <outlet property="fajr" destination="Gpp-FJ-Es8" id="JM9-vU-pep"/>
                 <outlet property="fifthNeedle" destination="csm-Dx-1Ka" id="bjs-ND-BQa"/>
-                <outlet property="fifthNeedleContainer" destination="OYB-BI-91C" id="cZe-1g-io3"/>
                 <outlet property="firstNeedle" destination="Z3M-0g-WeR" id="Wco-Ey-xoQ"/>
-                <outlet property="firstNeedleContainer" destination="Gpp-FJ-Es8" id="2BC-Zz-fIP"/>
                 <outlet property="fourthNeedle" destination="6zJ-66-bSh" id="RYw-RJ-fK4"/>
-                <outlet property="fourthNeedleView" destination="2vr-u8-iyQ" id="cKm-DB-jL4"/>
                 <outlet property="hourNeedle" destination="vhF-Ev-TfP" id="P7a-Sy-4Ez"/>
                 <outlet property="hourNeedleView" destination="jSo-2n-24j" id="Msw-pf-mT9"/>
+                <outlet property="isha" destination="OYB-BI-91C" id="jym-g3-6nq"/>
+                <outlet property="maghrib" destination="2vr-u8-iyQ" id="Xj9-sR-1mH"/>
                 <outlet property="secondNeedle" destination="QbU-pH-Xsc" id="j86-Lw-uuW"/>
-                <outlet property="secondNeedleContainer" destination="pVQ-yh-b31" id="l3N-Ma-GVr"/>
                 <outlet property="thirdNeedle" destination="gm9-Rs-kJT" id="D1L-1o-xee"/>
-                <outlet property="thirdNeedleContainer" destination="llB-Ah-UUk" id="CcH-zu-FEz"/>
                 <outlet property="view" destination="iN0-l3-epB" id="y3p-bp-gzh"/>
             </connections>
         </placeholder>
