@@ -87,7 +87,7 @@ class UPWatchViewController: UIViewController {
             NSLog("Got new location \(String(describing: newLocation))")
             let cal = Calendar(identifier: Calendar.Identifier.gregorian)
             let date = cal.dateComponents([.year, .month, .day], from: Date())
-            let coordinates = Coordinates(latitude: 12.8215893276892, longitude: 77.6570353668526)
+            let coordinates = Coordinates(latitude: newLocation.coordinate.latitude, longitude: newLocation.coordinate.longitude)
             var params = CalculationMethod.muslimWorldLeague.params
             params.madhab = .hanafi
             if let prayers = PrayerTimes(coordinates: coordinates, date: date, calculationParameters: params) {
