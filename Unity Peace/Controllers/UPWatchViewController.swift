@@ -41,40 +41,55 @@ class UPWatchViewController: UIViewController {
     @IBOutlet weak var sunsetlbl: UILabel!
     @IBOutlet weak var sunriselbl: UILabel!
     var location : CLLocation?
+    var graydientLayerCreated = false
+    
+    @IBOutlet weak var topFrameWidthConstraint: NSLayoutConstraint!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.setUpNeedles()
+        var width = self.topFrameWidthConstraint.constant
+        switch UIDevice.current.deviceCategory() {
+        case .iPhone6Plus:
+            width = 380
+        case .iPhone4, .iPhone5:
+            width = 300
+        default:
+            break
+        }
+        
+        self.topFrameWidthConstraint.constant = width
+    
         self.middleContainerView.putShadow()
         self.frameView.putShadow()
-        self.frameView.createGradientLayer(colors: [UIColor.lightGray.cgColor, UIColor.gray.cgColor])
-        
-        
-        self.frameView.layer.cornerRadius = self.frameView.frame.size.width / 2
-        self.dialView.layer.cornerRadius = self.dialView.frame.size.width / 2
-        self.numberView.layer.cornerRadius = self.numberView.frame.size.width / 2
-        self.middleContainerView.layer.cornerRadius = self.middleContainerView.frame.size.width / 2
-        self.middleView.layer.cornerRadius = self.middleView.frame.size.width / 2
-        self.arcView.layer.cornerRadius = self.arcView.frame.size.width / 2
-        
-        
-        let formatter = DateFormatter()
-        formatter.dateFormat = "hh:mm a"
-        formatter.timeZone = TimeZone.current
-        self.timeLabel.text = formatter.string(from: Date())
-        
-        formatter.dateFormat = "dd-MMM-yy"
-        self.dateLabel.text = formatter.string(from: Date())
         
         let radians = (CGFloat(-90) / 180) * CGFloat(Double.pi)
         self.sunriselbl.transform = sunriselbl.transform.rotated(by: radians)
         let radians1 = (CGFloat(90) / 180) * CGFloat(Double.pi)
         self.sunsetlbl.transform = sunsetlbl.transform.rotated(by: radians1)
         
+         NotificationCenter.default.addObserver(self, selector: #selector(self.locationDidUpdate(notif:)), name: LocationManager.LocationDidUpdateNotification, object: nil)
+        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        if !self.graydientLayerCreated {
+            self.graydientLayerCreated = true
+            self.frameView.createGradientLayer(colors: [UIColor.lightGray.cgColor, UIColor.gray.cgColor])
+            self.frameView.layer.cornerRadius = self.frameView.frame.size.width / 2
+            self.dialView.layer.cornerRadius = self.dialView.frame.size.width / 2
+            self.numberView.layer.cornerRadius = self.numberView.frame.size.width / 2
+            self.middleContainerView.layer.cornerRadius = self.middleContainerView.frame.size.width / 2
+            self.middleView.layer.cornerRadius = self.middleView.frame.size.width / 2
+            self.arcView.layer.cornerRadius = self.arcView.frame.size.width / 2
+
+        }
+        
+
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        
     }
 
     
@@ -84,64 +99,86 @@ class UPWatchViewController: UIViewController {
         }
         if let newLocation = notif.object as? CLLocation {
             self.location = newLocation
-            NSLog("Got new location \(String(describing: newLocation))")
-            let cal = Calendar(identifier: Calendar.Identifier.gregorian)
-            let date = cal.dateComponents([.year, .month, .day], from: Date())
-            let coordinates = Coordinates(latitude: newLocation.coordinate.latitude, longitude: newLocation.coordinate.longitude)
-            var params = CalculationMethod.muslimWorldLeague.params
-            params.madhab = .hanafi
-            if let prayers = PrayerTimes(coordinates: coordinates, date: date, calculationParameters: params) {
-                let formatter = DateFormatter()
-                formatter.dateFormat = "HH:mm"
-                formatter.timeZone = TimeZone.current
-                let currentTime = formatter.string(from: Date())
-                NSLog("Now %@",currentTime)
-                self.setTime(needle: self.hourNeedleView, time: currentTime)
-                NSLog("fajr %@", formatter.string(from: prayers.fajr))
-                self.setTime(needle: self.fajr, time: formatter.string(from: prayers.fajr))
-                NSLog("sunrise %@", formatter.string(from: prayers.sunrise))
-                self.setTime(needle: self.sunrise, time: formatter.string(from: prayers.sunrise))
-                NSLog("dhuhr %@", formatter.string(from: prayers.dhuhr))
-                self.setTime(needle: self.dhuhr, time: formatter.string(from: prayers.dhuhr))
-                NSLog("asr %@", formatter.string(from: prayers.asr))
-                self.setTime(needle: self.asr, time: formatter.string(from: prayers.asr))
-                NSLog("maghrib %@", formatter.string(from: prayers.maghrib))
-                self.setTime(needle: self.maghrib, time: formatter.string(from: prayers.maghrib))
-                NSLog("isha %@", formatter.string(from: prayers.isha))
-                self.setTime(needle: self.isha, time: formatter.string(from: prayers.isha))
-                
-                let times  = [prayers.fajr, prayers.dhuhr, prayers.asr, prayers.maghrib, prayers.isha]
-                let now = Date()
-                NSLog("Debug \(now)")
-                var index = 0
-                while now > times[index] {
-                    index += 1
-                    if index == times.count {
-                        break
-                    }
-                }
-                
+            self.UpdateUI()
+        }
+    }
+    
+    func UpdateUI () {
+        let newLocation = self.location!
+        
+        let formatter = DateFormatter()
+        formatter.dateFormat = "hh:mm a"
+        formatter.timeZone = TimeZone.current
+        self.timeLabel.text = formatter.string(from: Date())
+        
+        formatter.dateFormat = "dd-MMM-yy"
+        self.dateLabel.text = formatter.string(from: Date())
+        
+        self.hourNeedleView.transform = CGAffineTransform.identity
+        self.fajr.transform = CGAffineTransform.identity
+        self.dhuhr.transform = CGAffineTransform.identity
+        self.sunrise.transform = CGAffineTransform.identity
+        self.asr.transform = CGAffineTransform.identity
+        self.maghrib.transform = CGAffineTransform.identity
+        self.isha.transform = CGAffineTransform.identity
+        
+        let cal = Calendar(identifier: Calendar.Identifier.gregorian)
+        let date = cal.dateComponents([.year, .month, .day], from: Date())
+        let coordinates = Coordinates(latitude: newLocation.coordinate.latitude, longitude: newLocation.coordinate.longitude)
+        var params = CalculationMethod.muslimWorldLeague.params
+        params.madhab = .hanafi
+        if let prayers = PrayerTimes(coordinates: coordinates, date: date, calculationParameters: params) {
+            let formatter = DateFormatter()
+            formatter.dateFormat = "HH:mm"
+            formatter.timeZone = TimeZone.current
+            let currentTime = formatter.string(from: Date())
+            NSLog("Now %@",currentTime)
+            self.setTime(needle: self.hourNeedleView, time: currentTime)
+            NSLog("fajr %@", formatter.string(from: prayers.fajr))
+            self.setTime(needle: self.fajr, time: formatter.string(from: prayers.fajr))
+            NSLog("sunrise %@", formatter.string(from: prayers.sunrise))
+            self.setTime(needle: self.sunrise, time: formatter.string(from: prayers.sunrise))
+            NSLog("dhuhr %@", formatter.string(from: prayers.dhuhr))
+            self.setTime(needle: self.dhuhr, time: formatter.string(from: prayers.dhuhr))
+            NSLog("asr %@", formatter.string(from: prayers.asr))
+            self.setTime(needle: self.asr, time: formatter.string(from: prayers.asr))
+            NSLog("maghrib %@", formatter.string(from: prayers.maghrib))
+            self.setTime(needle: self.maghrib, time: formatter.string(from: prayers.maghrib))
+            NSLog("isha %@", formatter.string(from: prayers.isha))
+            self.setTime(needle: self.isha, time: formatter.string(from: prayers.isha))
+            
+            let times  = [prayers.fajr, prayers.dhuhr, prayers.asr, prayers.maghrib, prayers.isha]
+            let now = Date()
+            NSLog("Debug \(now)")
+            var index = 0
+            while now >= times[index] {
+                index += 1
                 if index == times.count {
-                    let startAngle = self.getAngleFromTime(time: formatter.string(from: times[index - 1]))
-                    let endAngle = 90
-                    self.arcView.drawRingFittingInsideView(startAngle: CGFloat(startAngle), endAngle: CGFloat(endAngle))
-                    self.arcView.drawRingFittingInsideView(startAngle: CGFloat(90), endAngle: CGFloat(self.getAngleFromTime(time: formatter.string(from: times[0]))))
-
-                }else if index == 0 {
-                    let startAngle = self.getAngleFromTime(time: formatter.string(from: times.last!))
-                    let endAngle = 90
-                    self.arcView.drawRingFittingInsideView(startAngle: CGFloat(startAngle), endAngle: CGFloat(endAngle))
-                    self.arcView.drawRingFittingInsideView(startAngle: CGFloat(90), endAngle: CGFloat(self.getAngleFromTime(time: formatter.string(from: times[0]))))
-                }
-                else {
-                    NSLog("Current Prayer %@", formatter.string(from: times[index]))
-                    let startAngle = self.getAngleFromTime(time: formatter.string(from: times[index - 1]))
-                    let endAngle = self.getAngleFromTime(time: formatter.string(from: times[index]))
-                    self.arcView.drawRingFittingInsideView(startAngle: CGFloat(startAngle), endAngle: CGFloat(endAngle))
-
+                    break
                 }
             }
+            
+            if index == times.count {
+                let startAngle = self.getAngleFromTime(time: formatter.string(from: times[index - 1]))
+                let endAngle = 90
+                self.arcView.drawRingFittingInsideView(startAngle: CGFloat(startAngle), endAngle: CGFloat(endAngle))
+                self.arcView.drawRingFittingInsideView(startAngle: CGFloat(90), endAngle: CGFloat(self.getAngleFromTime(time: formatter.string(from: times[0]))))
+                
+            }else if index == 0 {
+                let startAngle = self.getAngleFromTime(time: formatter.string(from: times.last!))
+                let endAngle = 90
+                self.arcView.drawRingFittingInsideView(startAngle: CGFloat(startAngle), endAngle: CGFloat(endAngle))
+                self.arcView.drawRingFittingInsideView(startAngle: CGFloat(90), endAngle: CGFloat(self.getAngleFromTime(time: formatter.string(from: times[0]))))
+            }
+            else {
+                NSLog("Current Prayer %@", formatter.string(from: times[index]))
+                let startAngle = self.getAngleFromTime(time: formatter.string(from: times[index - 1]))
+                let endAngle = self.getAngleFromTime(time: formatter.string(from: times[index]))
+                self.arcView.drawRingFittingInsideView(startAngle: CGFloat(startAngle), endAngle: CGFloat(endAngle))
+                
+            }
         }
+
     }
     
     func getAngleFromTime(time : String) -> Float {
@@ -208,19 +245,6 @@ class UPWatchViewController: UIViewController {
         }
     }
     
-    func setUpNeedles() {
-    
- //       let radians = (CGFloat(90) / 180) * CGFloat(Double.pi)
-//        self.asr.transform = asr.transform.rotated(by: radians)
-//        self.fajr.transform = fajr.transform.rotated(by: radians)
-//        self.dhuhr.transform = dhuhr.transform.rotated(by: radians)
-//        self.maghrib.transform = maghrib.transform.rotated(by: radians)
-//        self.isha.transform = isha.transform.rotated(by: radians)
-//        self.sunrise.transform = sunrise.transform.rotated(by: radians)
-//        self.hourNeedleView.transform = hourNeedleView.transform.rotated(by: radians)
-        
-        NotificationCenter.default.addObserver(self, selector: #selector(self.locationDidUpdate(notif:)), name: LocationManager.LocationDidUpdateNotification, object: nil)
-    }
 }
 
 class Ring:UIView
@@ -241,7 +265,7 @@ class Ring:UIView
         let shapeLayer = CAShapeLayer()
         shapeLayer.path = circlePath.cgPath
         
-        shapeLayer.fillColor = UIColor.clear.cgColor
+        shapeLayer.fillColor = UIColor.red.cgColor
         shapeLayer.strokeColor = UIColor.yellow.cgColor
         shapeLayer.lineWidth = desiredLineWidth
         layer.addSublayer(shapeLayer)

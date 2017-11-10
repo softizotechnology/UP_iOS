@@ -91,19 +91,28 @@ class UPHomeViewController: UIViewController {
             case let .willMoveController(menuController, previousMenuController):
                 print(previousMenuController)
                 print(menuController)
+                break
             case let .didMoveController(menuController, previousMenuController):
                 print(previousMenuController)
                 print(menuController)
+                if let watchVC =  menuController as? UPWatchViewController {
+                    watchVC.UpdateUI()
+                }
+                break
             case let .willMoveItem(menuItemView, previousMenuItemView):
                 print(previousMenuItemView)
                 print(menuItemView)
+                break
             case let .didMoveItem(menuItemView, previousMenuItemView):
                 print(previousMenuItemView)
                 print(menuItemView)
+                break
             case .didScrollStart:
                 print("Scroll start")
             case .didScrollEnd:
                 print("Scroll end")
+                print("Current page \(String(describing: pagingMenuController.pagingViewController?.currentPage))")
+                
             }
         }
         
