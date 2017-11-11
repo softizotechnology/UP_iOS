@@ -6,11 +6,15 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="UPCalendarViewController" customModule="Unity_Peace" customModuleProvider="target">
             <connections>
+                <outlet property="calendar" destination="xsV-Zb-Ylu" id="HnU-6f-HOy"/>
+                <outlet property="eventsTableView" destination="284-vK-TID" id="vkc-Pp-R9t"/>
+                <outlet property="islamicDatelbl" destination="kde-JF-Em4" id="Ccd-hH-Grs"/>
                 <outlet property="view" destination="iN0-l3-epB" id="EGr-Dr-dlA"/>
             </connections>
         </placeholder>
@@ -18,7 +22,122 @@
         <view contentMode="scaleToFill" id="iN0-l3-epB">
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xsV-Zb-Ylu" customClass="FSCalendar">
+                    <rect key="frame" x="0.0" y="40" width="375" height="290.5"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="width" secondItem="xsV-Zb-Ylu" secondAttribute="height" multiplier="80:62" id="gJk-Rd-aDo"/>
+                    </constraints>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="color" keyPath="titlePlaceholderColor">
+                            <color key="value" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="color" keyPath="titleWeekendColor">
+                            <color key="value" red="1" green="0.71583428920000003" blue="0.054655951330000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="color" keyPath="selectionColor">
+                            <color key="value" red="0.56961318959999996" green="0.77730038310000005" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="number" keyPath="borderRadius">
+                            <real key="value" value="5"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="color" keyPath="borderSelectionColor">
+                            <color key="value" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="boolean" keyPath="useVeryShortWeekdaySymbols" value="YES"/>
+                        <userDefinedRuntimeAttribute type="boolean" keyPath="allowsMultipleSelection" value="NO"/>
+                        <userDefinedRuntimeAttribute type="color" keyPath="headerTitleColor">
+                            <color key="value" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="string" keyPath="headerDateFormat" value="dd EEE, MMM yyyy"/>
+                        <userDefinedRuntimeAttribute type="number" keyPath="headerMinimumDissolvedAlpha">
+                            <real key="value" value="0.0"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="color" keyPath="todayColor">
+                            <color key="value" red="0.14117647059999999" green="0.0" blue="0.5" alpha="0.5534220950704225" colorSpace="calibratedRGB"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="color" keyPath="titleTodayColor">
+                            <color key="value" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                    <connections>
+                        <outlet property="dataSource" destination="-1" id="xbg-F3-WIq"/>
+                        <outlet property="delegate" destination="-1" id="Iqy-PZ-J6r"/>
+                    </connections>
+                </view>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="284-vK-TID">
+                    <rect key="frame" x="0.0" y="328.5" width="375" height="338.5"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <connections>
+                        <outlet property="dataSource" destination="-1" id="RvX-Jg-MsD"/>
+                        <outlet property="delegate" destination="-1" id="R8S-Nd-wl3"/>
+                    </connections>
+                </tableView>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5Oc-Bb-TrQ">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="50"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="kde-JF-Em4">
+                            <rect key="frame" x="71" y="15.5" width="233" height="19.5"/>
+                            <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="14"/>
+                            <color key="textColor" red="0.0" green="0.63412388392857144" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Io8-tZ-M7c">
+                            <rect key="frame" x="320" y="7.5" width="35" height="35"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="35" id="om0-rg-lxk"/>
+                                <constraint firstAttribute="height" constant="35" id="yQ6-ed-qWW"/>
+                            </constraints>
+                            <state key="normal" image="IcnNext"/>
+                            <connections>
+                                <action selector="nextDate:" destination="-1" eventType="touchUpInside" id="6od-nl-EH7"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wjU-VA-Qjl">
+                            <rect key="frame" x="20" y="7.5" width="35" height="35"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="35" id="6TY-DX-UbG"/>
+                                <constraint firstAttribute="width" constant="35" id="fpM-MG-FaX"/>
+                            </constraints>
+                            <state key="normal" image="IcnPrev"/>
+                            <connections>
+                                <action selector="preDate:" destination="-1" eventType="touchUpInside" id="fGg-5c-nmv"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstItem="kde-JF-Em4" firstAttribute="centerX" secondItem="5Oc-Bb-TrQ" secondAttribute="centerX" id="27g-R4-MOu"/>
+                        <constraint firstItem="Io8-tZ-M7c" firstAttribute="leading" secondItem="kde-JF-Em4" secondAttribute="trailing" constant="16" id="6kX-wD-rDg"/>
+                        <constraint firstItem="kde-JF-Em4" firstAttribute="leading" secondItem="wjU-VA-Qjl" secondAttribute="trailing" constant="16" id="EPY-aP-jd3"/>
+                        <constraint firstItem="wjU-VA-Qjl" firstAttribute="leading" secondItem="5Oc-Bb-TrQ" secondAttribute="leading" constant="20" id="Epb-CE-0Rf"/>
+                        <constraint firstAttribute="height" constant="50" id="HNT-iV-ig7"/>
+                        <constraint firstItem="wjU-VA-Qjl" firstAttribute="centerY" secondItem="kde-JF-Em4" secondAttribute="centerY" id="KbW-xl-aJw"/>
+                        <constraint firstItem="kde-JF-Em4" firstAttribute="centerY" secondItem="5Oc-Bb-TrQ" secondAttribute="centerY" id="XPa-nP-yzc"/>
+                        <constraint firstItem="Io8-tZ-M7c" firstAttribute="centerY" secondItem="kde-JF-Em4" secondAttribute="centerY" id="cIr-KG-Lqy"/>
+                        <constraint firstAttribute="trailing" secondItem="Io8-tZ-M7c" secondAttribute="trailing" constant="20" id="knA-wk-QBC"/>
+                    </constraints>
+                </view>
+            </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="5Oc-Bb-TrQ" secondAttribute="trailing" id="1Fh-Na-fHV"/>
+                <constraint firstItem="xsV-Zb-Ylu" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="40" id="9LE-EP-cVr"/>
+                <constraint firstItem="xsV-Zb-Ylu" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="Gya-Gb-byI"/>
+                <constraint firstItem="5Oc-Bb-TrQ" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="LjS-S4-g0O"/>
+                <constraint firstAttribute="trailing" secondItem="284-vK-TID" secondAttribute="trailing" id="X9c-yg-u8N"/>
+                <constraint firstItem="5Oc-Bb-TrQ" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="bAv-04-LRA"/>
+                <constraint firstAttribute="bottom" secondItem="284-vK-TID" secondAttribute="bottom" id="bKX-Mv-qJJ"/>
+                <constraint firstAttribute="trailing" secondItem="xsV-Zb-Ylu" secondAttribute="trailing" id="cuc-2v-fIQ"/>
+                <constraint firstItem="284-vK-TID" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="w07-LY-2zC"/>
+                <constraint firstItem="284-vK-TID" firstAttribute="top" secondItem="xsV-Zb-Ylu" secondAttribute="bottom" constant="-2" id="xXn-gW-AkT"/>
+            </constraints>
+            <point key="canvasLocation" x="33.5" y="54.5"/>
         </view>
     </objects>
+    <resources>
+        <image name="IcnNext" width="50" height="50"/>
+        <image name="IcnPrev" width="50" height="50"/>
+    </resources>
 </document>

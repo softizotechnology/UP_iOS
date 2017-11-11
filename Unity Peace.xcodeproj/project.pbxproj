@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0C71DBF61FB74F3800D71673 /* FestivalCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0C71DBF51FB74F3800D71673 /* FestivalCell.xib */; };
+		0C71DBF81FB74F6000D71673 /* FestivalCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C71DBF71FB74F6000D71673 /* FestivalCell.swift */; };
 		0CEEFDA01FB0988800DC4A7E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CEEFD9F1FB0988800DC4A7E /* AppDelegate.swift */; };
 		0CEEFDA21FB0988800DC4A7E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CEEFDA11FB0988800DC4A7E /* ViewController.swift */; };
 		0CEEFDA81FB0988800DC4A7E /* Unity_Peace.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 0CEEFDA61FB0988800DC4A7E /* Unity_Peace.xcdatamodeld */; };
@@ -32,6 +34,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0C71DBF51FB74F3800D71673 /* FestivalCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FestivalCell.xib; sourceTree = "<group>"; };
+		0C71DBF71FB74F6000D71673 /* FestivalCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FestivalCell.swift; sourceTree = "<group>"; };
 		0CEEFD9C1FB0988800DC4A7E /* Unity Peace.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Unity Peace.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		0CEEFD9F1FB0988800DC4A7E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0CEEFDA11FB0988800DC4A7E /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -124,6 +128,7 @@
 		0CEEFDB51FB09CE700DC4A7E /* Custom Views */ = {
 			isa = PBXGroup;
 			children = (
+				0C71DBF71FB74F6000D71673 /* FestivalCell.swift */,
 			);
 			path = "Custom Views";
 			sourceTree = "<group>";
@@ -152,6 +157,7 @@
 		0CEEFDB81FB09CE700DC4A7E /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				0C71DBF51FB74F3800D71673 /* FestivalCell.xib */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -255,6 +261,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0CEEFDC81FB0A59D00DC4A7E /* UPHomeViewController.xib in Resources */,
+				0C71DBF61FB74F3800D71673 /* FestivalCell.xib in Resources */,
 				0CEEFDCC1FB0A8FA00DC4A7E /* UPWatchViewController.xib in Resources */,
 				0CEEFDAD1FB0988800DC4A7E /* LaunchScreen.storyboard in Resources */,
 				0CEEFDD41FB0A96400DC4A7E /* UPCalendarViewController.xib in Resources */,
@@ -351,6 +358,7 @@
 				0CEEFDDA1FB0C29900DC4A7E /* NetworkIO.swift in Sources */,
 				0CEEFDDC1FB1E1D600DC4A7E /* LocationManager.swift in Sources */,
 				0CEEFDCE1FB0A91700DC4A7E /* UPDiaryViewController.swift in Sources */,
+				0C71DBF81FB74F6000D71673 /* FestivalCell.swift in Sources */,
 				0CEEFDCA1FB0A8ED00DC4A7E /* UPWatchViewController.swift in Sources */,
 				0CEEFDC11FB09E2900DC4A7E /* Extensions+Customizations.swift in Sources */,
 			);

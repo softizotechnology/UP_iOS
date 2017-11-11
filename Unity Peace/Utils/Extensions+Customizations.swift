@@ -744,6 +744,7 @@ class Constants: NSObject {
     static let GrayColor = UIColor(red: 204/255.0, green: 204/255.0, blue: 204/255.0, alpha: 1)
     static let SemiTransparentGrayColor = UIColor(red: 204/255.0, green: 204/255.0, blue: 204/255.0, alpha: 0.5)
     static let GreenColor = UIColor(red: 6/255.0, green: 198/255.0, blue: 174/255.0, alpha: 1)
+    static let DefaultOrangeColor = UIColor(red: 243/255.0, green: 135/255.0, blue: 50/255.0, alpha: 1)
     
 }
 
