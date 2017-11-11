@@ -95,9 +95,6 @@ class UPHomeViewController: UIViewController {
             case let .didMoveController(menuController, previousMenuController):
                 print(previousMenuController)
                 print(menuController)
-                if let watchVC =  menuController as? UPWatchViewController {
-                    watchVC.UpdateUI()
-                }
                 break
             case let .willMoveItem(menuItemView, previousMenuItemView):
                 print(previousMenuItemView)
