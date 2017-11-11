@@ -162,20 +162,19 @@ class UPWatchViewController: UIViewController {
             if index == times.count {
                 let startAngle = self.getAngleFromTime(time: formatter.string(from: times[index - 1]))
                 let endAngle = 90
-                self.arcView.drawRingFittingInsideView(startAngle: CGFloat(startAngle), endAngle: CGFloat(endAngle))
-                self.arcView.drawRingFittingInsideView(startAngle: CGFloat(90), endAngle: CGFloat(self.getAngleFromTime(time: formatter.string(from: times[0]))))
+                self.arcView.drawRingFittingInsideView(startAngle: CGFloat(startAngle), endAngle: CGFloat(endAngle), removeOtherLayers: true)
+                self.arcView.drawRingFittingInsideView(startAngle: CGFloat(90), endAngle: CGFloat(self.getAngleFromTime(time: formatter.string(from: times[0]))), removeOtherLayers: false)
                 
             }else if index == 0 {
                 let startAngle = self.getAngleFromTime(time: formatter.string(from: times.last!))
                 let endAngle = 90
-                self.arcView.drawRingFittingInsideView(startAngle: CGFloat(startAngle), endAngle: CGFloat(endAngle))
-                self.arcView.drawRingFittingInsideView(startAngle: CGFloat(90), endAngle: CGFloat(self.getAngleFromTime(time: formatter.string(from: times[0]))))
-            }
-            else {
+                self.arcView.drawRingFittingInsideView(startAngle: CGFloat(startAngle), endAngle: CGFloat(endAngle), removeOtherLayers: true)
+                self.arcView.drawRingFittingInsideView(startAngle: CGFloat(90), endAngle: CGFloat(self.getAngleFromTime(time: formatter.string(from: times[0]))), removeOtherLayers: false)
+            }else {
                 NSLog("Current Prayer %@", formatter.string(from: times[index]))
                 let startAngle = self.getAngleFromTime(time: formatter.string(from: times[index - 1]))
                 let endAngle = self.getAngleFromTime(time: formatter.string(from: times[index]))
-                self.arcView.drawRingFittingInsideView(startAngle: CGFloat(startAngle), endAngle: CGFloat(endAngle))
+                self.arcView.drawRingFittingInsideView(startAngle: CGFloat(startAngle), endAngle: CGFloat(endAngle), removeOtherLayers: true)
                 
             }
             
@@ -283,9 +282,16 @@ class UPWatchViewController: UIViewController {
 
 class Ring:UIView
 {
-    
-    func drawRingFittingInsideView(startAngle: CGFloat, endAngle : CGFloat)
+    var shapeLayers : [CAShapeLayer] = []
+    func drawRingFittingInsideView(startAngle: CGFloat, endAngle : CGFloat, removeOtherLayers : Bool)
     {
+        if removeOtherLayers {
+            for lay in self.shapeLayers {
+                lay.removeFromSuperlayer()
+            }
+            self.shapeLayers.removeAll()
+        }
+        
         let halfSize:CGFloat = min( bounds.size.width/2, bounds.size.height/2)
         let desiredLineWidth:CGFloat =  bounds.size.width/2   // your desired value
         
@@ -298,11 +304,11 @@ class Ring:UIView
         
         let shapeLayer = CAShapeLayer()
         shapeLayer.path = circlePath.cgPath
-        
         shapeLayer.fillColor = UIColor.red.cgColor
         shapeLayer.strokeColor = UIColor.yellow.cgColor
         shapeLayer.lineWidth = desiredLineWidth
         layer.addSublayer(shapeLayer)
+        self.shapeLayers.append(shapeLayer)
     }
 }
 
